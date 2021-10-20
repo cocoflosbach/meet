@@ -1,10 +1,9 @@
-# Mee
+# Meet Application
 
 ## Project Description
 
 Meet is a progressive web app built using react that enables it's users to view upcoming events for a specific city for professional, networking or job search purposes.
-The app is built using a serverless function hosted by cloud provider, AWS. The app will be built using a test-driven development (TDD) technique. The application uses the Google
-Calendar API to fetch upcoming events.
+The app is built using a serverless function hosted by cloud provider, AWS. The app will be built using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
 ## Application features and user stories
 
@@ -45,17 +44,21 @@ So that I can see the list of events concisely.
 
 SCENARIOS
  SCENARIO 1: AN EVENT ELEMENT IS COLLAPSED BY DEFAULT
-###Given User has searched for an event by city
-###When A list of all events is returned
-###Then The user should see all event elements are collapsed
+Given User has searched for an event by city
+When A list of all events is returned
+Then The user should see all event elements are collapsed
+
+
  SCENARIO 2: USER CAN EXPAND AN EVENT TO SEE ITS DETAILS 
-###Given The events list is rendered on the app page
-###When The user clicks the expand button
-###Then The user should see more details about selected event
+Given The events list is rendered on the app page
+When The user clicks the expand button
+Then The user should see more details about selected event
+
+
  SCENARIO 3: USER CAN COLLAPSE AN EVENT TO HIDE ITS DETAILS
-###Given The user has expanded the details for an event
-###When The user clicks the collapse button
-###Then The selected movie details should once again be hidden
+Given The user has expanded the details for an event
+When The user clicks the collapse button
+Then The selected movie details should once again be hidden
 
 
 
@@ -71,6 +74,8 @@ SCENARIOS
 
 SCENARIO 1: WHEN USER HASN’T SPECIFIED A NUMBER, 32 IS THE DEFAULT NUMBER
 Given The user has opened the app When The user searches events by city Then A modal to specify number of events to render should be seen with the default number set as 32.
+
+
  SCENARIO 2: USER CAN CHANGE THE NUMBER OF EVENTS THEY WANT TO SEE
 Given User has filtered events by city When The user changes the number of events they want to see per time Then The user should see a list with the specified number of events. 
 
@@ -87,6 +92,8 @@ SCENARIOS
 
 SCENARIO 1: SHOW CACHED DATA WHEN THERE IS NO INTERNET CONNECTION
 Given There is no internet connection on user device When the user opens the app Then the user should see a list of all upcoming events rendered in previous app search
+
+
  SCENARIO 2: SHOW ERROR WHEN USER CHANGES THE SETTINGS(CITY, TIME RANGE)
 Given There is no internet connection on user device When The user tries to modify settings of cached data  Then The user should see an error message  
 
