@@ -18,11 +18,20 @@ So that I can see the list of events that take place in that city
 
 SCENARIOS
 
-SCENARIO 1: WHEN USER HASN’T SEARCHED FOR A CITY, SHOW UPCOMING EVENTS FROM ALL CITIES. Given user hasn’t searched for any city When the user opens the app Then the user should see a list of all upcoming events
+SCENARIO 1: WHEN USER HASN’T SEARCHED FOR A CITY, SHOW UPCOMING EVENTS FROM ALL CITIES.
+Given user hasn’t searched for any city
+When the user opens the app
+Then the user should see a list of all upcoming events
 
-SCENARIO 2: USER SHOULD SEE A LIST OF SUGGESTIONS WHEN THEY SEARCH FOR A CITY. Given the main page is open When user starts typing in the city textbox Then the user should see a list of cities (suggestions) that match what they’ve typed
+SCENARIO 2: USER SHOULD SEE A LIST OF SUGGESTIONS WHEN THEY SEARCH FOR A CITY.
+Given the main page is open
+When user starts typing in the city textbox
+Then the user should see a list of cities (suggestions) that match what they’ve typed
 
-SCENARIO 3: USER CAN SELECT A CITY FROM THE SUGGESTED LIST. Given the user was typing “Berlin” in the city textbox And the list of suggested cities is showing When the user selects a city (e.g., “Berlin, Germany”) from the list Then their city should be changed to that city (i.e., “Berlin, Germany”) And the user should receive a list of upcoming events in that city
+SCENARIO 3: USER CAN SELECT A CITY FROM THE SUGGESTED LIST.
+Given the user was typing “Berlin” in the city textbox And the list of suggested cities is showing
+When the user selects a city (e.g., “Berlin, Germany”) from the list
+Then their city should be changed to that city (i.e., “Berlin, Germany”) And the user should receive a list of upcoming events in that city
 
 
 
@@ -36,11 +45,17 @@ So that I can see the list of events concisely.
 
 SCENARIOS
  SCENARIO 1: AN EVENT ELEMENT IS COLLAPSED BY DEFAULT
-Given User has searched for an event by city When A list of all events is returned Then The user should see all event elements are collapsed
+###Given User has searched for an event by city
+###When A list of all events is returned
+###Then The user should see all event elements are collapsed
  SCENARIO 2: USER CAN EXPAND AN EVENT TO SEE ITS DETAILS 
-Given The events list is rendered on the app page When The user clicks the expand button Then The user should see more details about selected event
+###Given The events list is rendered on the app page
+###When The user clicks the expand button
+###Then The user should see more details about selected event
  SCENARIO 3: USER CAN COLLAPSE AN EVENT TO HIDE ITS DETAILS
-Given The user has expanded the details for an event When The user clicks the collapse button Then The selected movie details should once again be hidden
+###Given The user has expanded the details for an event
+###When The user clicks the collapse button
+###Then The selected movie details should once again be hidden
 
 
 
