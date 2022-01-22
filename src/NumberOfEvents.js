@@ -20,10 +20,18 @@ class NumberOfEvents extends Component {
       alert("Please choose a number between 1 and 32");
     }
   };
+
+  handleItemClicked = (eventNumberOptions) => {
+    this.setState({
+      numberOfEvents: eventNumberOptions,
+    });
+  };
+
   render() {
-    const { numberOfEvents, eventNumberOptions } = this.state;
+    const { numberOfEvents } = this.state;
     return (
       <div className="NumberOfEvents">
+        <p>Number of Events</p>
         <input
           type="number"
           className="number-of-events"
@@ -31,7 +39,14 @@ class NumberOfEvents extends Component {
           onChange={this.handleInputChanged}
         />
         <ul className="options">
-          <li key={eventNumberOptions}>{eventNumberOptions}</li>
+          {this.state.eventNumberOptions.map((NumSuggestion) => (
+            <li
+              key={NumSuggestion}
+              onClick={() => this.handleItemClicked(NumSuggestion)}
+            >
+              {NumSuggestion}
+            </li>
+          ))}
         </ul>
       </div>
     );
