@@ -1,4 +1,5 @@
 import { mockData } from "./mock-data";
+import NProgress from "nprogress";
 
 /**@param {*} events:
  * The following function should be in the "api.js" file.
