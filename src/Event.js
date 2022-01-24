@@ -26,7 +26,7 @@ class Event extends Component {
     return (
       <div className="container bg-white shadow-2xl max-w-2xl mx-auto px-4 sm:py-8 sm:px-6  lg:px-8">
         {collapsed ? (
-          <div className="Events shadow-lg w-full min-h-80 bg-white-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-screen lg:aspect-none">
+          <div className="Events shadow-lg w-full min-h-80 bg-white-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
             <div className="text-left px-2 py-4">
               <h1 className="summary text-2xl">{event.summary}</h1>
               <p className="date-timezone">
