@@ -33,4 +33,24 @@ describe("<NumberOfEvents /> component", () => {
     );
     expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(32);
   });
+
+  test("selecting NumberOfEvents input reveals the options list", () => {
+    NumberOfEventsWrapper.find(".number-of-events").simulate("focus");
+    expect(NumberOfEventsWrapper.state("showOptions")).toBe(true);
+    expect(NumberOfEventsWrapper.find(".options").prop("style")).not.toEqual({
+      display: "none",
+    });
+  });
+
+  test("Selecting a suggestion should hide the options list", () => {
+    NumberOfEventsWrapper.setState({
+      numberOfEvents: 32,
+      showOptions: undefined,
+    });
+    NumberOfEventsWrapper.find(".options li").at(0).simulate("click");
+    expect(NumberOfEventsWrapper.state("showOptions")).toBe(false);
+    expect(NumberOfEventsWrapper.find(".options").prop("style")).toEqual({
+      display: "none",
+    });
+  });
 });

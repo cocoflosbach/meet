@@ -6,6 +6,7 @@ class NumberOfEvents extends Component {
     this.state = {
       numberOfEvents: 32,
       eventNumberOptions: [8, 16, 32],
+      showOptions: undefined,
     };
   }
 
@@ -24,6 +25,7 @@ class NumberOfEvents extends Component {
   handleItemClicked = (eventNumberOptions) => {
     this.setState({
       numberOfEvents: eventNumberOptions,
+      showOptions: false,
     });
   };
 
@@ -37,8 +39,14 @@ class NumberOfEvents extends Component {
           className="number-of-events"
           value={numberOfEvents}
           onChange={this.handleInputChanged}
+          onFocus={() => {
+            this.setState({ showOptions: true });
+          }}
         />
-        <ul className="options">
+        <ul
+          className="options"
+          style={this.state.showOptions ? {} : { display: "none" }}
+        >
           {this.state.eventNumberOptions.map((NumSuggestion) => (
             <li
               key={NumSuggestion}
