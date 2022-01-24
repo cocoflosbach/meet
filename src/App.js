@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       locations: [],
       events: [],
+      numberOfEvents: 32,
     };
   }
 
@@ -45,11 +46,11 @@ class App extends Component {
   };
 
   render() {
-    const { locations, events } = this.state;
+    const { locations, events, numberOfEvents } = this.state;
     return (
       <div className="App">
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents />
+        <NumberOfEvents numberOfEvents={numberOfEvents} />
         <EventList events={events} />
       </div>
     );
