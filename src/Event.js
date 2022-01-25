@@ -38,6 +38,7 @@ class Event extends Component {
 
             <div className=" px-4 py-4 w-40 text-right">
               <button
+                type="button"
                 className="details shadow-md text-purple-800 "
                 onClick={collapsed ? this.onShowDetails : this.onHideDetails}
               >
