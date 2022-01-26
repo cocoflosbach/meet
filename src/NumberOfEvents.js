@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
+
+
 class NumberOfEvents extends Component {
   constructor() {
     super();
     this.state = {
-      numberOfEvents: 32,
       eventNumberOptions: [8, 16, 32],
       showOptions: undefined,
     };
@@ -13,16 +14,13 @@ class NumberOfEvents extends Component {
   handleInputChanged = (event) => {
     const value = event.target.value
       ? parseInt(event.target.value)
-      : this.state.numberOfEvents;
-    this.setState({
-      numberOfEvents: value
-    })
+      : this.props.numberOfEvents;
     this.props.updateNumOfEvents(value);
   };
 
   handleItemClicked = (eventNumberOptions) => {
+    this.props.updateNumOfEvents(eventNumberOptions);
     this.setState({
-      numberOfEvents: eventNumberOptions,
       showOptions: false,
     });
   };
@@ -57,6 +55,10 @@ class NumberOfEvents extends Component {
       </div>
     );
   }
+}
+
+NumberOfEvents.defaultProps = {
+  numberOfEvents: 32
 }
 
 export default NumberOfEvents;

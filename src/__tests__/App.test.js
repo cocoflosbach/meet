@@ -88,14 +88,12 @@ describe("<App /> component", () => {
       const eventNumberOptions =
         NumberOfEventsWrapper.state("eventNumberOptions");
       const selectedIndex = Math.floor(
-        Math.random() * "eventNumberOptions.length"
+        Math.random() * eventNumberOptions.length
       );
       const selectedNumber = eventNumberOptions[selectedIndex];
       await NumberOfEventsWrapper.instance().handleItemClicked(selectedNumber);
       const allEvents = await getEvents();
-      const eventsToShow = allEvents.filter(
-        (event) => event.number === selectedNumber
-      );
+      const eventsToShow = allEvents.slice(0,selectedNumber);
       expect(AppWrapper.state("events")).toEqual(eventsToShow);
       AppWrapper.unmount();
     });
