@@ -40,6 +40,9 @@ class NumberOfEvents extends Component {
           onFocus={() => {
             this.setState({ showOptions: true });
           }}
+          onBlur={() => {
+            this.setState({ showOptions: false });
+          }}
         />
         <ul
           className="options"
