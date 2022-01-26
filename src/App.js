@@ -41,6 +41,7 @@ class App extends Component {
         location === "all"
           ? events
           : events.filter((event) => event.location === location);
+      const numOfEvents = Math.floor(Math.random() * [8, 16, 32]);
       const num = numOfEvents ? numOfEvents : this.state.numberOfEvents;
       const eventsToShow = locationEvents.slice(0, num);
       if (this.mounted) {
@@ -62,11 +63,18 @@ class App extends Component {
     }
   };
 
-  handleInputChanged = (event) => {
-    const value = event.target.value
-      ? parseInt(event.target.value)
-      : this.numberOfEvents;
-    this.updateNumOfEvents(value);
+  handleInputChanged = (location) => {
+    getEvents().then((events) => {
+      const locationEvents = events.filter(
+        (event) => event.location === location
+      );
+      const value = Math.floor(Math.random() * [8, 16, 32]);
+      const num = value ? value : this.state.numberOfEvents;
+      const eventsToShow = locationEvents.slice(0, num);
+      this.setState({
+        events: eventsToShow,
+      });
+    });
   };
 
   render() {
