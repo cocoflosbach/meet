@@ -52,16 +52,21 @@ class App extends Component {
     });
   };
 
-  updateNumOfEvents = (value) => {
-    this.setState({
-      numberOfEvents: value,
-    });
+  updateNumOfEvents = () => {
+    const value = Math.floor(Math.random() * 32);
     if (value >= 1 && value <= 32) {
       this.setState({ numberOfEvents: value });
       this.updateEvents(this.state.currentLocation, value);
     } else {
       alert("Please choose a number between 1 and 32");
     }
+  };
+
+  handleInputChanged = (event) => {
+    const value = event.target.value
+      ? parseInt(event.target.value)
+      : this.numberOfEvents;
+    this.updateNumOfEvents(value);
   };
 
   render() {
@@ -72,7 +77,7 @@ class App extends Component {
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents
           numberOfEvents={numberOfEvents}
-          updateNumOfEvents={this.updateNumOfEvents}
+          handleInputChanged={this.handleInputChanged}
         />
         <EventList events={events} />
       </div>

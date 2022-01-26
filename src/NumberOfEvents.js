@@ -9,13 +9,13 @@ class NumberOfEvents extends Component {
       showOptions: undefined,
     };
   }
-
+  /* 
   handleInputChanged = (event) => {
     const value = event.target.value
       ? parseInt(event.target.value)
       : this.props.numberOfEvents;
     this.props.updateNumOfEvents(value);
-  };
+  }; */
 
   handleItemClicked = (eventNumberOptions) => {
     this.setState({
@@ -25,7 +25,7 @@ class NumberOfEvents extends Component {
   };
 
   render() {
-    const { numberOfEvents } = this.props;
+    const { numberOfEvents, handleInputChanged } = this.props;
     return (
       <div className="NumberOfEvents">
         <p>Number of Events</p>
@@ -33,7 +33,7 @@ class NumberOfEvents extends Component {
           type="number"
           className="number-of-events"
           value={numberOfEvents}
-          onChange={this.handleInputChanged}
+          onChange={handleInputChanged}
           onFocus={() => {
             this.setState({ showOptions: true });
           }}
