@@ -1,11 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Event from "../Event";
+import { mockData } from "../mock-data";
 
 describe("<Event /> component", () => {
   let EventWrapper;
+  let event = mockData[0];
   beforeAll(() => {
-    EventWrapper = shallow(<Event />);
+    EventWrapper = shallow(<Event event={event}/>);
   });
 
   test("render event block", () => {
@@ -23,10 +25,12 @@ describe("<Event /> component", () => {
     expect(EventWrapper.find(".location")).toHaveLength(1);
   });
   test("render event description", () => {
+    EventWrapper.setState({ collapsed: false });
     expect(EventWrapper.find(".description")).toHaveLength(1);
   });
 
   test("render details button", () => {
+    EventWrapper.setState({ collapsed: true });
     expect(EventWrapper.find(".details")).toHaveLength(1);
   });
 

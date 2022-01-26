@@ -51,7 +51,7 @@ describe("<App /> component", () => {
       const locations = extractLocations(mockData);
       CitySearchWrapper.setState({ suggestions: locations });
       const suggestions = CitySearchWrapper.state("suggestions");
-      const selectedIndex = Math.floor(Math.random() * "suggestions.length");
+      const selectedIndex = Math.floor(Math.random() * suggestions.length);
       const selectedCity = suggestions[selectedIndex];
       await CitySearchWrapper.instance().handleItemClicked(selectedCity);
       const allEvents = await getEvents();
