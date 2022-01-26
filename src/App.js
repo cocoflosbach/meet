@@ -53,12 +53,8 @@ class App extends Component {
   };
 
   updateNumOfEvents = (value) => {
-    if (value >= 1 && value <= 32) {
       this.setState({ numberOfEvents: value });
       this.updateEvents(this.state.currentLocation, value);
-    } else {
-      alert("Please choose a number between 1 and 32");
-    }
   };
 
   render() {
