@@ -82,12 +82,12 @@ const getToken = async (code) => {
 };
 
 export const getAccessToken = async () => {
-  const accessToken = localStorage.getItem("access-token");
+  const accessToken = localStorage.getItem("access_token");
 
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
-    await localStorage.removeItem("access-token");
+    await localStorage.removeItem("access_token");
     const SearchParams = new URLSearchParams(window.location.search);
     const code = await SearchParams.get("code");
     if (!code) {
