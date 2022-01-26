@@ -29,7 +29,7 @@ class Event extends Component {
           <div className="Events shadow-lg w-full min-h-80 bg-white-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
             <div className="text-left px-2 py-4">
               <h1 className="summary text-2xl">{event.summary}</h1>
-              <p className="date-timezone">
+              <p className="date-timezone text-sm">
                 {event.start.dateTime}
                 {event.start.timeZone}
               </p>
@@ -47,10 +47,10 @@ class Event extends Component {
             </div>
           </div>
         ) : (
-          <div className="Events shadow-lg w-full min-h-80 bg-white-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-screen lg:aspect-none">
+          <div className="Events shadow-lg w-full min-h-80 bg-white-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
             <div className="text-left px-2 py-4">
               <h1 className="summary text-2xl">{event.summary}</h1>
-              <p className="date-timezone">
+              <p className="date-timezone text-sm">
                 {event.start.dateTime}
                 {event.start.timeZone}
               </p>
