@@ -15,14 +15,16 @@ describe("<NumberOfEvents /> component", () => {
     expect(NumberOfEventsWrapper.find(".options")).toHaveLength(1);
   });
 
-  test("renders number input correctly", () => {
+  // REPLACED BY INTEGRATION TEST IN APP.TEST.JS
+  /* test("renders number input correctly", () => {
     const numberOfEvents = NumberOfEventsWrapper.state("numberOfEvents");
     expect(NumberOfEventsWrapper.find(".number-of-events").prop("value")).toBe(
       numberOfEvents
     );
-  });
+  }); */
 
-  test("change state when number input changes", () => {
+  // REPLACED BY INTEGRATION TEST IN APP.TEST.JS
+  /* test("change state when number input changes", () => {
     NumberOfEventsWrapper.setState({
       numberOfEvents: 16,
     });
@@ -32,7 +34,7 @@ describe("<NumberOfEvents /> component", () => {
       eventNumber
     );
     expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(32);
-  });
+  }); */
 
   test("selecting NumberOfEvents input reveals the options list", () => {
     NumberOfEventsWrapper.find(".number-of-events").simulate("focus");

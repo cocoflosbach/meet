@@ -72,12 +72,12 @@ describe("<App /> component", () => {
       AppWrapper.unmount();
     });
 
-    test("pass NumberOfEvents state as props to Eventlist", () => {
+    test("pass NumberOfEvents state as props to NumberOfEvents", () => {
       const AppWrapper = mount(<App />);
       const numberOfEvents = AppWrapper.state("numberOfEvents");
       expect(numberOfEvents).not.toEqual(undefined);
       expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(
-        32
+        16
       );
     });
 
@@ -98,6 +98,20 @@ describe("<App /> component", () => {
       );
       expect(AppWrapper.state("events")).toEqual(eventsToShow);
       AppWrapper.unmount();
+    });
+
+    test("change state when number input changes", () => {
+      const AppWrapper = mount(<App />);
+      const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+      expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(
+        16
+      );
+      const eventNumber = { target: { value: 32 } };
+      NumberOfEventsWrapper.find(".number-of-events").simulate(
+        "change",
+        eventNumber
+      );
+      expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(32);
     });
   });
 });
