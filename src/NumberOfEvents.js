@@ -4,28 +4,30 @@ class NumberOfEvents extends Component {
   constructor() {
     super();
     this.state = {
-      numberOfEvents: 32,
+      // numberOfEvents: 32,
       eventNumberOptions: [8, 16, 32],
       showOptions: undefined,
     };
   }
-  /* 
+
   handleInputChanged = (event) => {
-    const value = event.target.value
-      ? parseInt(event.target.value)
-      : this.props.numberOfEvents;
-    this.props.updateNumOfEvents(value);
-  }; */
+    const value = parseInt(event.target.value);
+    if (value >= 1 && value <= 32) {
+      this.props.updateNumOfEvents(value);
+    } else {
+      alert("Please choose a number between 1 and 32");
+    }
+  };
 
   handleItemClicked = (eventNumberOptions) => {
+    this.props.updateNumOfEvents(eventNumberOptions);
     this.setState({
-      numberOfEvents: eventNumberOptions,
       showOptions: false,
     });
   };
 
   render() {
-    const { numberOfEvents, handleInputChanged } = this.props;
+    const { numberOfEvents } = this.props;
     return (
       <div className="NumberOfEvents">
         <p>Number of Events</p>
@@ -33,9 +35,12 @@ class NumberOfEvents extends Component {
           type="number"
           className="number-of-events"
           value={numberOfEvents}
-          onChange={handleInputChanged}
+          onChange={this.handleInputChanged}
           onFocus={() => {
             this.setState({ showOptions: true });
+          }}
+          onBlur={() => {
+            this.setState({ showOptions: false });
           }}
         />
         <ul
@@ -55,5 +60,9 @@ class NumberOfEvents extends Component {
     );
   }
 }
+
+NumberOfEvents.defaultProps = {
+  numberOfEvents: 32,
+};
 
 export default NumberOfEvents;
