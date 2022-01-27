@@ -51,7 +51,7 @@ describe("<App /> component", () => {
       const locations = extractLocations(mockData);
       CitySearchWrapper.setState({ suggestions: locations });
       const suggestions = CitySearchWrapper.state("suggestions");
-      const selectedIndex = Math.floor(Math.random() * "suggestions.length");
+      const selectedIndex = Math.floor(Math.random() * suggestions.length);
       const selectedCity = suggestions[selectedIndex];
       await CitySearchWrapper.instance().handleItemClicked(selectedCity);
       const allEvents = await getEvents();
@@ -77,7 +77,7 @@ describe("<App /> component", () => {
       const numberOfEvents = AppWrapper.state("numberOfEvents");
       expect(numberOfEvents).not.toEqual(undefined);
       expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(
-        16
+        32
       );
     });
 
@@ -88,14 +88,12 @@ describe("<App /> component", () => {
       const eventNumberOptions =
         NumberOfEventsWrapper.state("eventNumberOptions");
       const selectedIndex = Math.floor(
-        Math.random() * "eventNumberOptions.length"
+        Math.random() * eventNumberOptions.length
       );
       const selectedNumber = eventNumberOptions[selectedIndex];
       await NumberOfEventsWrapper.instance().handleItemClicked(selectedNumber);
       const allEvents = await getEvents();
-      const eventsToShow = allEvents.filter(
-        (event) => event.number === selectedNumber
-      );
+      const eventsToShow = allEvents.slice(0, selectedNumber);
       expect(AppWrapper.state("events")).toEqual(eventsToShow);
       AppWrapper.unmount();
     });
@@ -104,14 +102,16 @@ describe("<App /> component", () => {
       const AppWrapper = mount(<App />);
       const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
       expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(
-        16
+        32
       );
       const eventNumber = { target: { value: 32 } };
       NumberOfEventsWrapper.find(".number-of-events").simulate(
         "change",
         eventNumber
       );
-      expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(32);
+      expect(
+        NumberOfEventsWrapper.find(".number-of-events").prop("value")
+      ).toBe(eventNumber.target.value);
     });
   });
 });

@@ -3,8 +3,14 @@ import NumberOfEvents from "../NumberOfEvents";
 
 describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsWrapper;
+  const defaultNumberOfEvents = 32;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(
+      <NumberOfEvents
+        numberOfEvents={defaultNumberOfEvents}
+        updateNumOfEvents={() => {}}
+      />
+    );
   });
 
   test("render text input", () => {
@@ -46,7 +52,6 @@ describe("<NumberOfEvents /> component", () => {
 
   test("Selecting a suggestion should hide the options list", () => {
     NumberOfEventsWrapper.setState({
-      numberOfEvents: 32,
       showOptions: undefined,
     });
     NumberOfEventsWrapper.find(".options li").at(0).simulate("click");
