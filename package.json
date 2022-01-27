@@ -60,6 +60,7 @@
     "gh-pages": "^3.2.3",
     "jest-cucumber": "^3.0.1",
     "postcss": "^7.0.39",
+    "puppeteer": "^13.1.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
