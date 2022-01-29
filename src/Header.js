@@ -8,7 +8,7 @@ class Header extends Component {
           alt=""
           crossOrigin="*"
           variant="top"
-          src="https://i.imgur.com/iIoaSC3.png"
+          src="https://i.imgur.com/ax0HWlT.jpg"
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
