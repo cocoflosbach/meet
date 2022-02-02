@@ -8,17 +8,25 @@ class NumberOfEvents extends Component {
       // numberOfEvents: 32,
       /* eventNumberOptions: [8, 16, 32],
       showOptions: undefined, */
-      errorAlert: "",
+      query: "",
+      errorText: "",
     };
   }
 
   handleInputChanged = (event) => {
     const value = parseInt(event.target.value);
     if (value >= 1 && value <= 32) {
-      this.props.updateNumOfEvents(value);
+      return this.setState(
+        {
+          query: value,
+          errorText: "",
+        },
+        this.props.updateNumOfEvents(value)
+      );
     } else {
       return this.setState({
-        errorAlert: "Please choose a number between 1 and 32",
+        query: value,
+        errorText: "Please choose a number between 1 and 32",
       });
     }
   };
@@ -38,7 +46,7 @@ class NumberOfEvents extends Component {
         <input
           type="number"
           className="number-of-events"
-          value={numberOfEvents}
+          value={this.state.query}
           onChange={this.handleInputChanged}
           /* onFocus={() => {
             this.setState({ showOptions: true });
@@ -47,7 +55,7 @@ class NumberOfEvents extends Component {
             this.setState({ showOptions: false });
           }} */
         />
-        <ErrorAlert className="error-alert" text={this.state.errorAlert} />
+        <ErrorAlert className="error-alert" text={this.state.errorText} />
 
         {/* <ul
           className="options"

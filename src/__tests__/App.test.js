@@ -101,6 +101,7 @@ describe("<App /> component", () => {
     test("change state when number input changes", () => {
       const AppWrapper = mount(<App />);
       const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+      const query = NumberOfEventsWrapper.state("query");
       expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(
         32
       );
@@ -111,7 +112,7 @@ describe("<App /> component", () => {
       );
       expect(
         NumberOfEventsWrapper.find(".number-of-events").prop("value")
-      ).toBe(eventNumber.target.value);
+      ).toBe(query);
     });
   });
 });
