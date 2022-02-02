@@ -17,9 +17,9 @@ describe("<NumberOfEvents /> component", () => {
     expect(NumberOfEventsWrapper.find(".number-of-events")).toHaveLength(1);
   });
 
-  test("render suggestions for number of events to display", () => {
+  /* test("render suggestions for number of events to display", () => {
     expect(NumberOfEventsWrapper.find(".options")).toHaveLength(1);
-  });
+  }); */
 
   // REPLACED BY INTEGRATION TEST IN APP.TEST.JS
   /* test("renders number input correctly", () => {
@@ -42,7 +42,7 @@ describe("<NumberOfEvents /> component", () => {
     expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(32);
   }); */
 
-  test("selecting NumberOfEvents input reveals the options list", () => {
+  /* test("selecting NumberOfEvents input reveals the options list", () => {
     NumberOfEventsWrapper.find(".number-of-events").simulate("focus");
     expect(NumberOfEventsWrapper.state("showOptions")).toBe(true);
     expect(NumberOfEventsWrapper.find(".options").prop("style")).not.toEqual({
@@ -59,5 +59,5 @@ describe("<NumberOfEvents /> component", () => {
     expect(NumberOfEventsWrapper.find(".options").prop("style")).toEqual({
       display: "none",
     });
-  });
+  }); */
 });
