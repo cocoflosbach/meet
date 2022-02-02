@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import { ErrorAlert } from "./Alert";
 
 class NumberOfEvents extends Component {
   constructor() {
     super();
     this.state = {
       // numberOfEvents: 32,
-      eventNumberOptions: [8, 16, 32],
-      showOptions: undefined,
+      /* eventNumberOptions: [8, 16, 32],
+      showOptions: undefined, */
+      errorAlert: "",
     };
   }
 
@@ -15,16 +17,18 @@ class NumberOfEvents extends Component {
     if (value >= 1 && value <= 32) {
       this.props.updateNumOfEvents(value);
     } else {
-      alert("Please choose a number between 1 and 32");
+      return this.setState({
+        errorAlert: "Please choose a number between 1 and 32",
+      });
     }
   };
 
-  handleItemClicked = (eventNumberOptions) => {
+  /* handleItemClicked = (eventNumberOptions) => {
     this.props.updateNumOfEvents(eventNumberOptions);
     this.setState({
       showOptions: false,
     });
-  };
+  }; */
 
   render() {
     const { numberOfEvents } = this.props;
@@ -36,14 +40,16 @@ class NumberOfEvents extends Component {
           className="number-of-events"
           value={numberOfEvents}
           onChange={this.handleInputChanged}
-          onFocus={() => {
+          /* onFocus={() => {
             this.setState({ showOptions: true });
           }}
           onBlur={() => {
             this.setState({ showOptions: false });
-          }}
+          }} */
         />
-        <ul
+        <ErrorAlert className="error-alert" text={this.state.errorAlert} />
+
+        {/* <ul
           className="options"
           style={this.state.showOptions ? {} : { display: "none" }}
         >
@@ -55,7 +61,7 @@ class NumberOfEvents extends Component {
               {NumSuggestion}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     );
   }
