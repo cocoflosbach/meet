@@ -39,7 +39,7 @@ class NumberOfEvents extends Component {
   }; */
 
   render() {
-    const { numberOfEvents } = this.props;
+    // const { numberOfEvents } = this.props;
     return (
       <div className="NumberOfEvents">
         <p>Number of Events</p>
