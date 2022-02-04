@@ -49,7 +49,7 @@ export const getEvents = async () => {
 
   // when user is not is offline show last viewd eevnts from local storage
 
-  if (!navigator.online) {
+  if (!navigator.onLine) {
     const data = localStorage.getItem("lastEvents");
     NProgress.done();
     return data ? JSON.parse(data).events : [];
