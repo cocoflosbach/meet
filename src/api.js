@@ -39,7 +39,7 @@ const removeQuery = () => {
   }
 };
 
-export const getEvents = async (events) => {
+export const getEvents = async () => {
   NProgress.start();
 
   if (window.location.href.startsWith("http://localhost")) {
@@ -49,7 +49,7 @@ export const getEvents = async (events) => {
   if (!navigator.online) {
     const data = localStorage.getItem("lastEvents");
     NProgress.done();
-    return data ? JSON.parse(events).events : [];
+    return data ? JSON.parse(data).events : [];
   }
   const token = await getAccessToken();
   if (token) {
