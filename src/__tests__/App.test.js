@@ -81,23 +81,6 @@ describe("<App /> component", () => {
       );
     });
 
-    /* test("get list of events matching the number specified by the user", async () => {
-      const AppWrapper = mount(<App />);
-      const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-      NumberOfEventsWrapper.setState({ eventNumberOptions: [8, 16, 32] });
-      const eventNumberOptions =
-        NumberOfEventsWrapper.state("eventNumberOptions");
-      const selectedIndex = Math.floor(
-        Math.random() * eventNumberOptions.length
-      );
-      const selectedNumber = eventNumberOptions[selectedIndex];
-      await NumberOfEventsWrapper.instance().handleInputChanged(selectedNumber);
-      const allEvents = await getEvents();
-      const eventsToShow = allEvents.slice(0, selectedNumber);
-      expect(AppWrapper.state("events")).toEqual(eventsToShow);
-      AppWrapper.unmount();
-    });
- */
     test("change state when number input changes", () => {
       const AppWrapper = mount(<App />);
       const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
