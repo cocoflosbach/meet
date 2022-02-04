@@ -7,7 +7,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import Header from "./Header";
 import { InfoAlert } from "./Alert";
-import { extractLocations, getEvents } from "./api";
+import { extractLocations, getEvents, checkToken, getAccessToken } from "./api";
 import {
   ScatterChart,
   Scatter,
@@ -17,6 +17,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import EventGenres from "./EventGenres";
+import WelcomeScreen from "./WelcomeScreen";
 
 class App extends Component {
   constructor(props) {
@@ -26,19 +28,27 @@ class App extends Component {
       events: [],
       numberOfEvents: 32,
       currentLocation: "all",
+      showWelcomeScreen: undefined,
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
-      }
-    });
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const SearchParams = new URLSearchParams(window.location.search);
+    const code = SearchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -82,6 +92,9 @@ class App extends Component {
 
   render() {
     const { locations, events, numberOfEvents } = this.state;
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App" />;
+
     return (
       <div className="App">
         {!navigator.onLine ? (
@@ -98,31 +111,39 @@ class App extends Component {
           }}
         />
 
-        <h4> Events in each city </h4>
-
-        <ResponsiveContainer height={400}>
-          <ScatterChart
-            margin={{
-              top: 20,
-              right: 20,
-              bottom: 20,
-              left: 20,
-            }}
-          >
-            <CartesianGrid />
-            <XAxis type="category" dataKey="city" name="city" />
-            <YAxis
-              type="number"
-              dataKey="number"
-              name="number of events"
-              allowDecimals={false}
-            />
-            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-            <Scatter data={this.getData()} fill="#8884d8" />
-          </ScatterChart>
-        </ResponsiveContainer>
+        <div className="data-vis-wrapper">
+          <h4 className="font-semibold"> Events in each city </h4>
+          <EventGenres events={events} />
+          <ResponsiveContainer height={400}>
+            <ScatterChart
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis
+                type="number"
+                dataKey="number"
+                name="number of events"
+                allowDecimals={false}
+              />
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
 
         <EventList events={events} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }
