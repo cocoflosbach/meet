@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Meet",
+  "name": "Meet App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,34 +9,16 @@
       "purpose": "any maskable"
     },
     {
-      "src": "meet-app-16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "meet-app-24.png",
-      "sizes": "24x24",
-      "type": "image/png"
-    },
-    {
-      "src": "meet-app-32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "meet-app-64.png",
-      "sizes": "64x64",
-      "type": "image/png"
-    },
-    {
-      "src": "meet-app-192.png",
+      "src": "meetlogo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "meet-app-512.png",
+      "src": "meetlogo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
