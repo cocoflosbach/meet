@@ -4,8 +4,8 @@ import "tailwindcss/tailwind.css";
 
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
-    <div className="WelcomeScreen py-20 justify-center">
-      <div className="container m-14 justify-center relative center shadow-md pb-8 rounded-r-lg rounded-l-lg">
+    <div className="WelcomeScreen py-20">
+      <div className="container m-14 ml-24 w-2/3 h-w-3/5 mx-auto object-center shadow-md px-4 pb-8 rounded-r-lg rounded-l-lg">
         <div className="w-64 h-64 logo justify-self-center mx-auto">
           <img
             alt=""
@@ -21,11 +21,11 @@ function WelcomeScreen(props) {
           Log in to see upcoming events around the world for full-stack
           developers
         </h4>
-        <div className="button_cont" align="center">
+        <div className="button_cont static" align="center">
           <div className="google-btn">
             <div className="google-icon-wrapper">
               <img
-                className="google-icon relative text-right"
+                className="google-icon relative "
                 src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                 alt="Google sign-in"
               />
