@@ -115,10 +115,7 @@ class App extends Component {
           <div>
             <h4 className="font-semibold"> Events in each city </h4>
           </div>
-
-          <ResponsiveContainer>
-            <EventGenres events={events} />
-          </ResponsiveContainer>
+          <EventGenres events={events} />
 
           <ResponsiveContainer height={400}>
             <ScatterChart
