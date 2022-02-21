@@ -34,6 +34,16 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
+
+    /* getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({
+          events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events),
+        });
+      }
+    }); */
+
     const accessToken = localStorage.getItem("access_token");
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const SearchParams = new URLSearchParams(window.location.search);
@@ -110,12 +120,12 @@ class App extends Component {
             this.updateNumOfEvents(number);
           }}
         />
-
-        <div className="data-vis-wrapper ">
-          <div>
-            <h4 className="font-semibold"> Events in each city </h4>
-          </div>
-          <EventGenres events={events} />
+        <br />
+        <div>
+          <h4 className="font-semibold"> Events in each city </h4>
+        </div>
+        <div className="data-vis-wrapper grid grid-cols-1 gap-y-5 gap-x-3 sm:grid-cols-1 md:grid-cols-2 xl:gap-x-8 ">
+          <EventGenres className="center" events={events} />
 
           <ResponsiveContainer height={400}>
             <ScatterChart
