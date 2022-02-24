@@ -41,9 +41,7 @@ class Event extends Component {
               <p className="date-timezone text-sm">
                 {date.toLocaleDateString()} {""} {event.start.timeZone}
               </p>
-              <p className="location font-bold text-yellow-600">
-                {event.location}
-              </p>
+              <p className="location font-bold ">{event.location}</p>
             </div>
 
             <div className=" text-left px-2 py-4 button">
@@ -64,9 +62,7 @@ class Event extends Component {
                 {date.toLocaleDateString()}
                 {event.start.timeZone}
               </p>
-              <p className="location font-bold text-yellow-600">
-                {event.location}
-              </p>
+              <p className="location font-bold">{event.location}</p>
               <p className="description">{event.description}</p>
             </div>
 
