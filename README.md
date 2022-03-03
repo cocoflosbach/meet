@@ -113,11 +113,9 @@ Given The app contains details of events in a variety of cities When The app
 
 ## Links
 
-```bash
-
 - [Repo](<https://github.com/Cocoflosbach/meet> "<meet> Repo")
+- [Live website](https://cocoflosbach.github.io/meet/) and sign in using google OAuth to explore the app!
 
-```
 
 ## Built With
 
