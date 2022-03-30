@@ -4,8 +4,8 @@ import "tailwindcss/tailwind.css";
 
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
-    <div className="WelcomeScreen py-20">
-      <div className="container m-14 w-2/3 h-w-3/5 mx-auto object-center shadow-md px-4 pb-8 rounded-r-lg rounded-l-lg">
+    <div className="WelcomeScreen w-full h-full fixed bg-white py-20 top-0">
+      <div className="container mt-20 ml-32 w-2/3 h-w-3/5 object-center shadow-md px-4 pb-8 rounded-r-lg rounded-l-lg">
         <div className="w-64 h-64 logo justify-self-center mx-auto">
           <img
             alt=""
